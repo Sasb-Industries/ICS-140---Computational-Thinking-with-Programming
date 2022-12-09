@@ -3,7 +3,7 @@ import random
 
 def main():
     print("\n" "Welcome to Black Jack !")
-    start = input("Press any key to be dealt a hand.")
+    input("Press any key to be dealt a hand.")
     round()
 
 def round():

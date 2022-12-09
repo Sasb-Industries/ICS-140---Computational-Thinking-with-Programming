@@ -2,15 +2,17 @@ import random
 
 
 def main():
-    print("Welcome to Black Jack !")
+    print("\n" "Welcome to Black Jack !")
     start = input("Press any key to be dealt a hand.")
     round()
 
 def round():
     shuffled_deck = shuffle_deck(make_deck())
     player_hand, dealer_hand = deal_cards(shuffled_deck)
-    draw_card(player_hand)
-    draw_card(dealer_hand)
+    print(f"You got dealt a(n) {player_hand[0]} and a(n) {player_hand[1]} .")
+    draw_2cards(player_hand)
+    print(dealer_hand)
+    # draw_card(dealer_hand)
 
 
 
@@ -40,21 +42,11 @@ def deal_single_card(deck):
     del deck[0]
     return card
 
-def draw_card(hand):
-    for card in hand:
-        if card == 10:
-            print(f" _______\n"
-                 f"|{card}     |\n"
-                 f"|       |\n"
-                 f"|       |\n"
-                 f"|     {card}|\n"
-                 f"|_______|")
-        else:
-            print(f" _______\n"
-                  f"| {card}     |\n"
-                  f"|       |\n"
-                  f"|       |\n"
-                  f"|     {card} |\n"
-                  f"|_______|")
-
+def draw_2cards(hand):
+            print(f" _______    _______\n"
+                 f"| {hand[0]}     |  | {hand[1]}     |\n"
+                 f"|       |  |       |\n"
+                 f"|       |  |       |\n"
+                 f"|     {hand[0]} |  |     {hand[1]} |\n"
+                 f"|_______|  |_______|")
 main()

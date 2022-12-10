@@ -55,9 +55,14 @@ def draw_2cards(hand):
 def player_logic(hand):
     print(f"You got dealt a(n) {hand[0]} and a(n) {hand[1]} .")
     draw_2cards(hand)
-    hit_stay = str(input("Would you like to hit or stay? ").lower())
-    while hit_stay != "hit" or hit_stay != "stay":
+    hit_stay = input("Would you like to hit or stay? ").lower()
+    while hit_stay != "hit" and hit_stay != "stay":
         print(hit_stay)
-        hit_stay = str(input("Invalid input. Would you like to hit or stay? ").lower())
+        hit_stay = input("Invalid input. Would you like to hit or stay? ").lower()
+    if hit_stay == "hit":
+        hit(hand)
+
+def hit(hand):
+    
 
 main()

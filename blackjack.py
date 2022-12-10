@@ -44,20 +44,20 @@ def deal_single_card(deck):
 # will draw the first two cards the user gets
 def draw_2cards(hand):
             print(f" _______    _______\n"
-                 f"| {hand[0]}     |  | {hand[1]}     |\n"
-                 f"|       |  |       |\n"
-                 f"|       |  |       |\n"
-                 f"|     {hand[0]} |  |     {hand[1]} |\n"
-                 f"|_______|  |_______|")
+                f"| {hand[0]}     |  | {hand[1]}     |\n"
+                f"|       |  |       |\n"
+                f"|       |  |       |\n"
+                f"|     {hand[0]} |  |     {hand[1]} |\n"
+                f"|_______|  |_______|\n")
 
 # def draw_3cards(hand): draws 3 cards similar to the draw_2cards() function
 
 def player_logic(hand):
     print(f"You got dealt a(n) {hand[0]} and a(n) {hand[1]} .")
     draw_2cards(hand)
-    hit_stay = input("Would you like to hit or stay? ").lower()
-    while hit_stay != "hit":
+    hit_stay = str(input("Would you like to hit or stay? ").lower())
+    while hit_stay != "hit" or hit_stay != "stay":
         print(hit_stay)
-        hit_stay = input("Invalid input. Would you like to hit or stay? ").lower()
+        hit_stay = str(input("Invalid input. Would you like to hit or stay? ").lower())
 
 main()

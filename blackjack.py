@@ -9,7 +9,7 @@ def main():
 def round():
     shuffled_deck = shuffle_deck(make_deck())
     player_hand, dealer_hand = deal_cards(shuffled_deck)
-    player_logic(player_hand)
+    player_logic(player_hand, shuffled_deck)
     print(dealer_hand)
     # draw_card(dealer_hand)
 
@@ -51,8 +51,15 @@ def draw_2cards(hand):
                 f"|_______|  |_______|\n")
 
 # def draw_3cards(hand): draws 3 cards similar to the draw_2cards() function
+def draw_3cards(hand):
+            print(f" _______    _______    _______\n"
+                f"| {hand[0]}     |  | {hand[1]}     |  | {hand[2]}     |\n"
+                f"|       |  |       |  |       |\n"
+                f"|       |  |       |  |       |\n"
+                f"|     {hand[0]} |  |     {hand[1]} |  |     {hand[2]} |\n"
+                f"|_______|  |_______|  |_______|\n")
 
-def player_logic(hand):
+def player_logic(hand, deck):
     print(f"You got dealt a(n) {hand[0]} and a(n) {hand[1]} .")
     draw_2cards(hand)
     hit_stay = input("Would you like to hit or stay? ").lower()
@@ -60,9 +67,13 @@ def player_logic(hand):
         print(hit_stay)
         hit_stay = input("Invalid input. Would you like to hit or stay? ").lower()
     if hit_stay == "hit":
-        hit(hand)
+        hit(hand, deck)
 
-def hit(hand):
+def hit(hand, deck):
+    hand.append(deck.pop())
+    draw_3cards(hand)
     
+
+
 
 main()

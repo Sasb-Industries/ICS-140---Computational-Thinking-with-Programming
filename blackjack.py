@@ -9,9 +9,11 @@ def main():
 def round():
     shuffled_deck = shuffle_deck(make_deck())
     player_hand, dealer_hand = deal_cards(shuffled_deck)
-    player_logic(player_hand, shuffled_deck)
-    dealer_logic(dealer_hand, shuffled_deck)
-    print(dealer_hand)
+    player_total = player_logic(player_hand, shuffled_deck)
+    if player_total > 21:
+        print("You Busted ! You Lose !")
+    else:
+        dealer_total = dealer_logic(dealer_hand, shuffled_deck)
     # draw_card(dealer_hand)
 
 
@@ -58,16 +60,23 @@ def player_logic(hand, deck):
             if total > 21:
                 print("You Busted !")
         else:
-            print(f" Your hand is : {total}")
+            print(f"Your hand is : {get_hand_value(hand)}\n")
             stay = False
+    return total
 
 def dealer_logic(hand, deck):
     print(f"The dealer has a(n) {hand[0]} and a(n) {hand[1]} .")
     draw_2cards(hand)
     total = get_hand_value(hand)
     while total < 17:
+        print("The dealer hits !")
         hit(hand, deck)
         total = get_hand_value(hand)
+    if total > 22:
+        print("The dealer busted !")
+    else:
+        print("The dealer stays !")
+        return total
     # stay = True
     # while total < 22 and stay:
     #     if total < 17:
